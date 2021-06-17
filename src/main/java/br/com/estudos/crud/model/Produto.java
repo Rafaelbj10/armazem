@@ -1,7 +1,6 @@
-package com.crud.Crud.model;
+package br.com.estudos.crud.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 
 @NoArgsConstructor
 @Data
-@AllArgsConstructor
 @Entity
 public class Produto {
 
@@ -22,4 +20,11 @@ public class Produto {
     private double valorUnitario;
     private int quantidade;
     private String marca;
+    private String descricao;
+
+    public Produto(String nome, double valorUnitario, String marca) {
+        this.nome = nome;
+        this.valorUnitario = valorUnitario;
+        this.marca = marca;
+    }
 }
