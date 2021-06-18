@@ -22,9 +22,12 @@ public class Produto {
     private String marca;
     private String descricao;
 
-    public Produto(String nome, double valorUnitario, String marca) {
+    public Produto(Long id, String nome, double valorUnitario, String marca, String descricao) {
         this.nome = nome;
         this.valorUnitario = valorUnitario;
         this.marca = marca;
+        this.descricao = descricao;
     }
+
+
 }
