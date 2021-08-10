@@ -1,6 +1,5 @@
 package br.com.estudos.crud.service;
 
-import br.com.estudos.crud.dto.ProdutoDto;
 import br.com.estudos.crud.model.Produto;
 import br.com.estudos.crud.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

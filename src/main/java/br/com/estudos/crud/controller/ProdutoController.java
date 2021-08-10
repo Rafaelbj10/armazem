@@ -1,6 +1,7 @@
 package br.com.estudos.crud.controller;
 
 import br.com.estudos.crud.dto.ProdutoDto;
+import br.com.estudos.crud.mapper.ProdutoMapper;
 import br.com.estudos.crud.model.Produto;
 import br.com.estudos.crud.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,26 +21,22 @@ public class ProdutoController {
 
     @GetMapping
     public List<ProdutoDto> listar(){
+
         List<Produto> produtos = produtoService.listar();
 
-        List<ProdutoDto> produtoDto = new ArrayList<>();
+        ProdutoMapper produtoMapper = new ProdutoMapper();
 
-        for (Produto p : produtos){
+        //return produtoMapper.getProdutosDtoByForEachNormal(produtos);
 
-            ProdutoDto dto = new ProdutoDto();
+        //return produtoMapper.getProdutosDtoByFor(produtos);
 
-            dto.setNome(p.getNome());
-            dto.setMarca(p.getMarca());
-            dto.setValorUnitario(p.getValorUnitario());
-            dto.setDescricao(p.getDescricao());
+        return produtoMapper.getProdutosDtoByForStream(produtos);
 
-            produtoDto.add(dto);
-        }
-        return produtoDto;
     }
 
     @GetMapping("/{id}")
     public List<ProdutoDto> buscar(@PathVariable Long id){
+
         List<Produto> produtos = produtoService.listar();
 
         List<ProdutoDto> produtoDto = new ArrayList<>();
@@ -48,6 +45,7 @@ public class ProdutoController {
 
             ProdutoDto dto = new ProdutoDto();
 
+            dto.setId(p.getId());
             dto.setNome(p.getNome());
             dto.setMarca(p.getMarca());
             dto.setValorUnitario(p.getValorUnitario());
@@ -62,7 +60,7 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Produto> cadastrar(@RequestBody ProdutoDto dto){
         Produto produto = produtoService.cadastrar(dto.transformaParaObjeto());
-        return new ResponseEntity(dto, HttpStatus.CREATED);
+        return new ResponseEntity(produto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")

@@ -1,6 +1,5 @@
 package br.com.estudos.crud.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,6 +22,7 @@ public class Produto {
     private String descricao;
 
     public Produto(Long id, String nome, double valorUnitario, String marca, String descricao) {
+        this.id = id;
         this.nome = nome;
         this.valorUnitario = valorUnitario;
         this.marca = marca;

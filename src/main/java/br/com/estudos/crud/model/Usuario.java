@@ -27,6 +27,7 @@ public class Usuario {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
+        this.dataNascimento = dataNascimento;
     }
 
 

@@ -3,11 +3,8 @@ package br.com.estudos.crud.dto;
 import br.com.estudos.crud.model.Produto;
 import lombok.Data;
 
-
-
 @Data
 public class ProdutoDto {
-
 
     private Long id;
     private String nome;
