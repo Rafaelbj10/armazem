@@ -26,11 +26,11 @@ public class ProdutoController {
 
         ProdutoMapper produtoMapper = new ProdutoMapper();
 
-        //return produtoMapper.getProdutosDtoByForEachNormal(produtos);
+        return produtoMapper.getProdutosDtoByForEachNormal(produtos);
 
         //return produtoMapper.getProdutosDtoByFor(produtos);
 
-        return produtoMapper.getProdutosDtoByForStream(produtos);
+        //return produtoMapper.getProdutosDtoByForStream(produtos);
 
     }
 

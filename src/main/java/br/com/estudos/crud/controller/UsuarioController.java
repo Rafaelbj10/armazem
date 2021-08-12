@@ -1,6 +1,7 @@
 package br.com.estudos.crud.controller;
 
 import br.com.estudos.crud.dto.UsuarioDto;
+import br.com.estudos.crud.mapper.UsuarioMapper;
 import br.com.estudos.crud.model.Usuario;
 import br.com.estudos.crud.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +22,13 @@ public class UsuarioController {
 
     @GetMapping
     public List<UsuarioDto> listar(){
+
         List<Usuario> usuario = usuarioService.listar();
 
-        List<UsuarioDto> usuarioDto = new ArrayList<>();
+        UsuarioMapper usuarioMapper = new UsuarioMapper();
 
-        for (Usuario u : usuario){
+        return usuarioMapper.getUsuariosDtoByForEachNormal(usuario);
 
-            UsuarioDto dto = new UsuarioDto();
-
-            dto.setId(u.getId());
-            dto.setNome(u.getNome());
-            dto.setEndereco(u.getEndereco());
-
-            usuarioDto.add(dto);
-        }
-        return usuarioDto;
     }
 
     @GetMapping("/{id}")

@@ -56,7 +56,6 @@ public class ProdutoMapper {
 
     }
 
-
     public List<ProdutoDto> getProdutosDtoByForStream(List<Produto> produtoList) {
 
         List<ProdutoDto> listaProdutoDto = new ArrayList<>();
