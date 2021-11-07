@@ -13,27 +13,27 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClienteService {
+public class CadastroClienteService {
 
     @Autowired
     ClienteRepository clienteRepository;
 
-    public List<Cliente> listar(){
+    public List<Cliente> listar() {
         return clienteRepository.findAll();
     }
 
-    public Optional<Cliente> buscar(@PathVariable Long id){
+    public Optional<Cliente> buscar(@PathVariable Long id) {
         return clienteRepository.findById(id);
     }
 
-    public Cliente cadastrar(@RequestBody Cliente cliente){
-         clienteRepository.save(cliente);
-         return cliente;
+    public Cliente cadastrar(@RequestBody Cliente cliente) {
+        clienteRepository.save(cliente);
+        return cliente;
     }
 
-    public void alterar(@RequestBody Cliente imput, @PathVariable Long id){
+    public void alterar(@RequestBody Cliente imput, @PathVariable Long id) {
         Optional<Cliente> usuario = clienteRepository.findById(id);
-        if (usuario.isPresent()){
+        if (usuario.isPresent()) {
             Cliente entity = usuario.get();
 
             entity.setId(imput.getId());

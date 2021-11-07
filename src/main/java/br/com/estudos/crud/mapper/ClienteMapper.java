@@ -1,30 +1,30 @@
 package br.com.estudos.crud.mapper;
 
-import br.com.estudos.crud.dto.UsuarioDto;
-import br.com.estudos.crud.model.Usuario;
+import br.com.estudos.crud.dto.ClienteDto;
+import br.com.estudos.crud.model.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioMapper {
+public class ClienteMapper {
 
-    public List<UsuarioDto> getUsuariosDtoByForEachNormal(List<Usuario> usuarioList){
+    public List<ClienteDto> getUsuariosDtoByForEachNormal(List<Cliente> clienteList) {
 
-        List<UsuarioDto> usuarioDto = new ArrayList<>();
+        List<ClienteDto> clienteDto = new ArrayList<>();
 
-        for (Usuario usuario : usuarioList){
+        for (Cliente cliente : clienteList) {
 
-            UsuarioDto dto = new UsuarioDto();
+            ClienteDto dto = new ClienteDto();
 
-            dto.setId(usuario.getId());
-            dto.setNome(usuario.getNome());
-            dto.setEndereco(usuario.getEndereco());
+            dto.setId(cliente.getId());
+            dto.setNome(cliente.getNome());
+            dto.setEndereco(cliente.getEndereco());
 
-            usuarioDto.add(dto);
+            clienteDto.add(dto);
 
         }
 
-        return usuarioDto;
+        return clienteDto;
 
     }
 
