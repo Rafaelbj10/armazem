@@ -1,7 +1,8 @@
 package br.com.estudos.crud.controller;
 
-import br.com.estudos.crud.dto.ClienteDto;
-import br.com.estudos.crud.model.Cliente;
+import br.com.estudos.crud.parameters.ClienteRequest;
+import br.com.estudos.crud.presenters.cliente.ClienteDto;
+import br.com.estudos.crud.presenters.cliente.ClienteResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -20,7 +21,7 @@ public interface CadastroClienteController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @PostMapping
-    ResponseEntity<ClienteDto> cadastrar(@RequestBody Cliente cliente);
+    ResponseEntity<ClienteResponse> cadastrar(@RequestBody ClienteRequest request);
 
 
     @ApiOperation(value = "Buscar cliente por CPF")
@@ -30,7 +31,7 @@ public interface CadastroClienteController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),
     })
     @GetMapping(value = "/{cpf}", produces = "application/json")
-    ResponseEntity<Cliente> buscar(@PathVariable String cpf);
+    ResponseEntity<ClienteDto> buscar(@PathVariable String cpf);
 
 
 }
