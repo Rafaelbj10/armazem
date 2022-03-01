@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class CadastroClienteControllerImpl implements CadastroClienteController {
@@ -22,9 +24,14 @@ public class CadastroClienteControllerImpl implements CadastroClienteController 
     }
 
     @Override
-    public ResponseEntity<ClienteDto> buscar(String cpf) {
-        final var response = cadastroClienteService.buscar(cpf);
+    public ResponseEntity<ClienteDto> findByCpf(String cpf) {
+        final var response = cadastroClienteService.findByCpf(cpf);
         return ResponseEntity.ok(response);
+    }
+
+    @Override
+    public List<ClienteDto> findAll() {
+        return cadastroClienteService.findAll();
     }
 
 }

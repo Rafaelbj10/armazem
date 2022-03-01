@@ -7,6 +7,8 @@ import br.com.estudos.crud.service.CadastroClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CadastroClienteServiceImpl implements CadastroClienteService {
@@ -18,8 +20,13 @@ public class CadastroClienteServiceImpl implements CadastroClienteService {
     }
 
     @Override
-    public ClienteDto buscar(final String cpf) {
-        return clienteRepository.buscar(cpf);
+    public ClienteDto findByCpf(final String cpf) {
+        return clienteRepository.findByCpf(cpf);
+    }
+
+    @Override
+    public List<ClienteDto> findAll() {
+        return clienteRepository.findAll();
     }
 
 }

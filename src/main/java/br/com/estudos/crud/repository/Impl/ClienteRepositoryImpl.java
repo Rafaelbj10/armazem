@@ -9,8 +9,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import static br.com.estudos.crud.utils.queries.ClienteQuery.BUSCAR_POR_ID;
-import static br.com.estudos.crud.utils.queries.ClienteQuery.INSERT_CLIENT;
+import java.util.List;
+
+import static br.com.estudos.crud.utils.queries.ClienteQuery.*;
 
 @RequiredArgsConstructor
 @Repository
@@ -23,14 +24,23 @@ public class ClienteRepositoryImpl implements ClienteRepository {
     }
 
     @Override
-    public ClienteDto buscar(final String cpf) {
+    public ClienteDto findByCpf(final String cpf) {
         try {
             return jdbcTemplate.queryForObject(BUSCAR_POR_ID, new BeanPropertyRowMapper<>(ClienteDto.class), cpf);
         } catch (EmptyResultDataAccessException e) {
             throw new RuntimeException("Não foi possível encontrar o cliente na base.");
         }
+    }
+
+    public List<ClienteDto> findAll() {
+        try {
+            return jdbcTemplate.query(FIND_ALL_CLIENT, new BeanPropertyRowMapper<>(ClienteDto.class));
+        } catch (EmptyResultDataAccessException e) {
+            throw new RuntimeException("Não foi possível buscar todos os clientes no banco de dados. ");
+        }
 
     }
+
 
 }
 
